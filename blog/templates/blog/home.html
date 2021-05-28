@@ -5,7 +5,9 @@
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="#">{{ message.author }}</a>
-              <small class="text-muted">{{ message.date_posted }}</small>
+              <small class="text-muted">
+                {{message.date_posted|date:"F j, Y \a\t g:i a"}}
+              </small>
             </div>
             <h2><a class="article-title" href="#">{{ message.title }}</a></h2>
             <p class="article-content">{{ message.content }}</p>
