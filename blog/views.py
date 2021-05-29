@@ -3,7 +3,7 @@ from .models import Message
 
 def home(request):
     context = {
-        'messages': Message.objects.all()
+        'message_set': Message.objects.all()
     }
     return render(request, 'blog/home.html', context)
 
