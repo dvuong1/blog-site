@@ -1,6 +1,7 @@
 from django.shortcuts import render
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from django.views.generic import (
-    ListView, DetailView, CreateView
+    ListView, DetailView, CreateView, UpdateView
 )
 from .models import Message
 
@@ -24,10 +25,24 @@ class MsgListView(ListView):
 class MsgDetailView(DetailView):
     model = Message
 
-class MsgCreateView(CreateView):
+class MsgCreateView(LoginRequiredMixin, CreateView):
     model = Message
     fields = ['title', 'content']
 
     def form_valid(self, form):
         form.instance.author = self.request.user
         return super().form_valid(form)
+
+class MsgUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
+    model = Message
+    fields = ['title', 'content']
+
+    def form_valid(self, form):
+        form.instance.author = self.request.user
+        return super().form_valid(form)
+
+    def test_func(self):
+        message = self.get_object()
+        if self.request.user == message.author:
+            return True
+        return False
