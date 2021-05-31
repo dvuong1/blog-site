@@ -1,17 +1,18 @@
 {% extends "blog/base.html" %}
 {% block content %}
     {% for message in message_set %}
-        <article class="media content-section">
-          <div class="media-body">
-            <div class="article-metadata">
-              <a class="mr-2" href="#">{{ message.author }}</a>
-              <small class="text-muted">
-                {{message.date_posted|date:"F j, Y \a\t g:i a"}}
-              </small>
-            </div>
-            <h2><a class="article-title" href="#">{{ message.title }}</a></h2>
-            <p class="article-content">{{ message.content }}</p>
+      <article class="media content-section">
+        <img class="rounded-circle article-img" src="{{ message.author.profile.image.url }}"></img>
+        <div class="media-body">
+          <div class="article-metadata">
+            <a class="mr-2" href="#">{{ message.author }}</a>
+            <small class="text-muted">
+              {{message.date_posted|date:"F j, Y \a\t g:i a"}}
+            </small>
           </div>
-        </article>
+          <h2><a class="article-title" href="#">{{ message.title }}</a></h2>
+          <p class="article-content">{{ message.content }}</p>
+        </div>
+      </article>
     {% endfor %}
 {% endblock content %}
