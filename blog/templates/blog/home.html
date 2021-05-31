@@ -10,7 +10,7 @@
               {{message.date_posted|date:"F j, Y \a\t g:i a"}}
             </small>
           </div>
-          <h2><a class="article-title" href="#">{{ message.title }}</a></h2>
+          <h2><a class="article-title" href="{% url 'message-detail' message.id %}">{{ message.title }}</a></h2>
           <p class="article-content">{{ message.content }}</p>
         </div>
       </article>
