@@ -1,16 +1,16 @@
 {% extends "blog/base.html" %}
 {% block content %}
-  <h1 class="ml-2">Message Board</h1><br>
+  <h1 class="ml-2 pb-2 mb-4 border-bottom">Message Board</h1>
     {% for message in message_set %}
       <article class="media content-section">
-        <img class="rounded-circle article-img" src="{{ message.author.profile.image.url }}"></img>
+        <img class="rounded-circle article-img mt-1" src="{{ message.author.profile.image.url }}"></img>
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="#">{{ message.author }}</a>
             <small class="text-muted">
               {{message.date_posted|date:"F j, Y \a\t g:i a"}}
             </small>
-            <button class="btn btn-link float-right mt-n2 text-muted" type="button" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <button class="btn btn-link float-right mt-n2 pt-1 text-muted" type="button" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
                 <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
               </svg>
