@@ -26,7 +26,7 @@ class MsgListView(ListView):
 
 class UserMsgListView(ListView):
     model = Message
-    template_name = 'blog/user_messages.html'
+    template_name = 'blog/user_profile.html'
     context_object_name = 'message_set'
     paginate_by = 5
 
