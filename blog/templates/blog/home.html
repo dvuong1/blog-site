@@ -28,4 +28,48 @@
         </div>
       </article>
     {% endfor %}
+    
+    {%if is_paginated%}
+    <!-- Page number traversal -->
+    <div class="d-flex justify-content-center pl-5 pr-5">
+      <!-- Clickable or muted previous page link -->
+      {%if page_obj.has_previous%}
+        <a href="?page={{ page_obj.previous_page_number }}"><</a>
+      {%else%}
+        <p class="d-inline text-muted"><</p>
+      {%endif%}
+
+      <!-- Display "1 ..." at the beginning -->
+      {%if page_obj.number|add:'-3' >= 1%}
+        <a class="mx-1" href="?page=1">1</a>
+        {%if page_obj.number|add:'-3' > 1%}
+          <p class="d-inline mx-1">...</p>
+        {%endif%}
+      {%endif%}
+
+      <!-- Display page numbers within distance of 2 in both directions -->
+      {% for num in page_obj.paginator.page_range %}
+        {% if page_obj.number == num %}
+          <a class="font-weight-bold mx-1" href="?page={{num}}">{{num}}</a>
+        {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+          <a class="mx-1" href="?page={{ num }}">{{num}}</a>
+        {%endif%}
+      {%endfor%}
+
+      <!-- Display "... (last page)" at the end -->
+      {%if page_obj.number|add:'3' <= page_obj.paginator.num_pages%}
+        {%if page_obj.number|add:'3' < page_obj.paginator.num_pages%}
+          <p class="d-inline mx-1">...</p>
+        {%endif%}
+        <a class="mx-1" href="?page={{page_obj.paginator.num_pages}}">{{page_obj.paginator.num_pages}}</a>
+      {%endif%}
+
+      <!-- Clickable or muted next page link -->
+      {%if page_obj.has_next%}
+        <a href="?page={{ page_obj.next_page_number }}">></a>
+      {%else%}
+        <p class="d-inline text-muted">></p>
+      {%endif%}
+    </div>
+    {%endif%}
 {% endblock content %}

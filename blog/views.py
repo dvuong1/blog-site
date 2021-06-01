@@ -21,6 +21,7 @@ class MsgListView(ListView):
     template_name = 'blog/home.html'
     context_object_name = 'message_set'
     ordering = ['-date_posted']
+    paginate_by = 5
 
 class MsgDetailView(DetailView):
     model = Message
