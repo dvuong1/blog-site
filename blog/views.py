@@ -41,6 +41,7 @@ class MsgDetailView(DetailView):
 class MsgCreateView(LoginRequiredMixin, CreateView):
     model = Message
     fields = ['title', 'content']
+    template_name_suffix = "_create_form"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
@@ -49,6 +50,7 @@ class MsgCreateView(LoginRequiredMixin, CreateView):
 class MsgUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Message
     fields = ['title', 'content']
+    template_name_suffix = "_update_form"
 
     def form_valid(self, form):
         form.instance.author = self.request.user
