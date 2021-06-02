@@ -4,7 +4,7 @@
     <h1 class="pb-2 mb-4 border-bottom">Message Board</h1>
       {% for message in message_set %}
         <article class="media content-section">
-          <img class="rounded-circle article-img mt-1" src="{{ message.author.profile.image.url }}"></img>
+          <img style="object-fit: cover" class="rounded-circle article-img mt-1" src="{{ message.author.profile.image.url }}"></img>
           <div class="media-body">
             <div class="article-metadata">
               <a class="mr-2" href="{% url 'user-messages' message.author.username %}">{{ message.author }}</a>

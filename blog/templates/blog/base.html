@@ -35,6 +35,7 @@
                 <a class="nav-item nav-link" href="{% url 'message-create' %}">New Message</a>
                 <a class="nav-item nav-link" href="{% url 'user-messages' user.username %}">Profile</a>
                 <a class="nav-item nav-link" href="{% url 'logout' %}">Log Out</a>
+                <img style="width: 40px; height: 40px; object-fit: cover" class="rounded-circle" src="{{ user.profile.image.url }}"></img>
               {% else %}
                 <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
                 <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
@@ -59,13 +60,12 @@
         <!-- Sidebar -->
         <div class="col-md-4">
           <div class="content-section">
-            <h3>Our Sidebar</h3>
-            <p class='text-muted'>You can put any information here you'd like.
+            <h3>Links</h3>
+            <p class='text-muted'>Welcome to my message board!
               <ul class="list-group">
-                <li class="list-group-item list-group-item-light">Latest Posts</li>
-                <li class="list-group-item list-group-item-light">Announcements</li>
-                <li class="list-group-item list-group-item-light">Calendars</li>
-                <li class="list-group-item list-group-item-light">etc</li>
+                <a href="{% url 'blog-home' %}"><li class="list-group-item list-group-item-light">Latest Posts</li></a>
+                <a href="{% url 'blog-about' %}"><li class="list-group-item list-group-item-light">FAQ</li></a>
+                <a href="https://github.com/dvuong1/FBWall"><li class="list-group-item list-group-item-light">GitHub Repo</li></a>
               </ul>
             </p>
           </div>

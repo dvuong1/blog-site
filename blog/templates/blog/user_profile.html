@@ -15,7 +15,7 @@
       {% endif %}
       </h1>
       <div class="media">
-        <img class="rounded-circle account-img" src="{{ message_set.0.author.profile.image.url }}">
+        <img style="object-fit: cover" class="rounded-circle account-img" src="{{ message_set.0.author.profile.image.url }}">
         <div class="media-body">
           <h2 class="">{{ view.kwargs.username }}</h2>
           <p class="text-secondary">{{ message_set.0.author.email }}</p>
