@@ -25,7 +25,7 @@
     <h3 class="ml-2 pb-2 my-4 border-bottom">Messages from {{view.kwargs.username}} ({{page_obj.paginator.count}})</h3>
     {% for message in message_set %}
       <article class="media content-section">
-        <img class="rounded-circle article-img mt-1" src="{{ message.author.profile.image.url }}"></img>
+        <img style="object-fit: cover" class="rounded-circle article-img mt-1" src="{{ message.author.profile.image.url }}"></img>
         <div class="media-body">
           <div class="article-metadata">
             <a class="mr-2" href="{% url 'user-messages' message.author.username %}">{{ message.author }}</a>
