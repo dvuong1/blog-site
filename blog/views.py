@@ -34,6 +34,10 @@ class UserMsgListView(ListView):
         user = get_object_or_404(User, username=self.kwargs.get('username'))
         return Message.objects.filter(author=user).order_by('-date_posted')
 
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['target_user'] = User.objects.filter(username=self.kwargs.get('username')).first()
+        return context
 
 class MsgDetailView(DetailView):
     model = Message

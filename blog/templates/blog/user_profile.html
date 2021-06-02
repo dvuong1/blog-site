@@ -3,7 +3,7 @@
 {% block content %}
     <div class="content-section">
       <h1 class="border-bottom mb-4">User Profile
-      {% if message_set.0.author == user %}
+      {% if target_user.username == user.username %}
         <button class="btn btn-link float-right text-muted" type="button" id="messageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
             <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"></path>
@@ -15,14 +15,14 @@
       {% endif %}
       </h1>
       <div class="media">
-        <img style="object-fit: cover" class="rounded-circle account-img" src="{{ message_set.0.author.profile.image.url }}">
+        <img style="object-fit: cover" class="rounded-circle account-img" src="{{ target_user.profile.image.url }}">
         <div class="media-body">
-          <h2 class="">{{ view.kwargs.username }}</h2>
-          <p class="text-secondary">{{ message_set.0.author.email }}</p>
+          <h2 class="">{{ target_user.username }}</h2>
+          <p class="text-secondary">{{ target_user.email }}</p>
         </div>
       </div>
       
-    <h3 class="ml-2 pb-2 my-4 border-bottom">Messages from {{view.kwargs.username}} ({{page_obj.paginator.count}})</h3>
+    <h3 class="ml-2 pb-2 my-4 border-bottom">Messages from {{target_user.username}} ({{page_obj.paginator.count}})</h3>
     {% for message in message_set %}
       <article class="media content-section">
         <img style="object-fit: cover" class="rounded-circle article-img mt-1" src="{{ message.author.profile.image.url }}"></img>
