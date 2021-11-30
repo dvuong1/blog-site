@@ -1,2 +1,2 @@
 # FBWall
- Django interview project
+ Django-based website with blog functionality
